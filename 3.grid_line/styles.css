@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: whitesmoke;
+    display: grid;
+}
+
+h1 {
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+    color: whitesmoke;
+}
+
+main {
+    height: 100vh;
+    display: grid;
+    
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet;
+}
