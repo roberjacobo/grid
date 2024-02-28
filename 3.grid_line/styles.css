@@ -6,7 +6,6 @@
 body {
     background-color: black;
     color: whitesmoke;
-    display: grid;
 }
 
 h1 {
@@ -18,12 +17,71 @@ h1 {
 main {
     height: 100vh;
     display: grid;
-    
+    grid-gap: 10px;
+
+    /* grid-template-columns: 1fr 2fr; */
+
+    /* 
+        Notar el patrón *-start *-end en el que
+        se le dan nombres a las columnas y a los rows
+        así: [variable-nombre];
+        Así se especifica donde comienza y termina cada sección
+        para tener un mayor control en diferentes pantallas.
+    */
+    grid-template-columns: 
+        [sidebar-start] 1fr
+        [sidebar-end contenido-start] 2fr
+        [contenido-end];
+
+    grid-template-rows:
+        [header-start] 1fr
+        [header-end contenido-start] 2fr
+        [contenido-end footer-start] 1fr
+        [footer-end];
 }
 
-div {
+main > * {
+    font-family: "Courier New", Courier, monospace;
+    background-color: goldenrod;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: blueviolet;
+}
+
+/* 
+    grid-column: inicio / fin;
+    grid-row: inicio / fin;
+
+    [inicio] <-- aquí se usa cualquier variable de arriba como en: [sidebar-end contenido-start]
+    se puede usar o sidebar-end o contenido start y cualquiera es correcta pero es mejor
+    usar la que tenga start para iniciar para tener un código más legible.
+     ejemplo:
+    grid-row: contenido-start / footer-end; | grid-row: sidebar-end / footer-end; línea 33
+
+    hay elementos que si no pones un inicio y fin igual funcionan
+    pero se recomienda ser lo más explícitos posible.
+*/
+
+header {
+    grid-column: sidebar-start / contenido-end;
+    grid-row: header-start / header-end;
+}
+
+aside {
+    grid-column: sidebar-start / sidebar-end;
+    grid-row: contenido-start / footer-end;
+}
+
+article {
+    grid-column: contenido-start / contenido-end;
+    grid-row: contenido-start / footer-end;
+}
+
+/* 
+    Aquí footer se podría remover y funcionaría exactamente igual debido a
+    que se adapta al grid declarado arriba.
+*/
+
+footer {
+    grid-column: contenido-start / contenido-end;
 }
