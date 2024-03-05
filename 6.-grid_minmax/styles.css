@@ -1,0 +1,39 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    display: grid;
+    height: 100vh;
+    grid-gap: 10px;
+    grid-template-columns:
+    /* repeat(4, 30px minmax(10%, 1fr)); */
+    /* repeat(8, minmax(min-content, max-content)); */
+    [start]
+    repeat(4, 
+    [col-lg-start] minmax(100px, 1fr)
+    [col-lg-end col-md-start] minmax(50px, 1fr)
+    [col-md-end col-sm-start] minmax(20px, 1fr)
+    [col-sm-end]
+    )
+    [end];
+}
+
+div {
+    background-color: goldenrod;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+    Aquí se marco el background rojo donde inicia y termina en el patrón 
+    del repeat de la línea 14, inicia en col-lg-start y termina en el 
+    col-sm-end o cualquier otro.
+*/
+div:first-of-type {
+    background-color: red;
+    grid-column: col-lg-start / col-sm-end;
+}
